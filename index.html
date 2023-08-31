@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-VVR7YBLHCB"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-VVR7YBLHCB');
+	</script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script type="text/javascript" src="socket-lib.js"></script>
+	<title>Tarung Kata</title>
+</head>
+<body>
+	
+	<div class="main">
+		
+		<div class="setting-page" >
+			<div class="page-body">
+				<p class="close-setting-button close-button">
+					<i class="fa fa-times"></i></p>
+				<p class="title-menu">PENGATURAN</p>
+				<div class="setting-item ">
+					<span>Tema Malam</span>
+					<span style="display:inline-block;" class="form-check form-switch">
+							<input class="form-check-input night-mode" type="checkbox">
+					</span>
+				</div>
+				<div class="setting-item">
+					<span>Waktu</span> 
+					<span style="display:inline-block;" class="form-check form-switch">
+							<input class="form-check-input timer" type="checkbox" checked>
+					</span>
+				</div>
+				<div class="setting-item">
+					<span>Mode Sulit</span>
+					<span style="display:inline-block;" class="form-check form-switch">
+							<input class="form-check-input hard-mode" type="checkbox">
+					</span>
+				</div>
+				<div class="setting-item">
+					<span>Saran</span>
+					<span style="display:inline-block;margin-right: 0.5rem;color: grey;text-decoration: underline;">
+						<a style="color: grey;" href="mailto:edikurniadidev@gmail.com" target="_blank">Email</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="how-to-play-page">
+			<div class="page-body">
+				<p class="close-how-to-play close-button"><i class="fa fa-times"></i></p>
+				<p class="title-menu">CARA BERMAIN</p>
+				<p>Tebak kata yang dimaksud dalam 6 kali percobaan</p>
+				<p>Setiap tebakan harus merupakan kata yang terdiri dari 5 huruf dan terdapat dalam KBBI. Tekan enter atau tombol jawab untuk memasukan jawaban</p>
+				<p>Setelah setiap tebakan, warna pada kotak huruf mungkin akan berubah dan dapat menjadi petunjuk untuk mencari jawaban yang benar</p>
+				<hr>
+				<p>Aturan:</p>
+				<div class="word-example">
+					<span class="box-letter-example">M</span>
+					<span class="box-letter-example">A</span>
+					<span class="box-letter-example green">N</span>
+					<span class="box-letter-example">D</span>
+					<span class="box-letter-example">I</span>
+				</div>
+				<p></p>
+				<p>huruf <b>N</b> ada dalam kata tebakan dan berada di posisi yang tepat</p>
+				<div class="word-example">
+					<span class="box-letter-example">T</span>
+					<span class="box-letter-example">E</span>
+					<span class="box-letter-example">M</span>
+					<span class="box-letter-example orange">A</span>
+					<span class="box-letter-example">N</span>
+				</div>
+				<p></p>
+				<p>huruf <b>A</b> ada dalam kata tebakan tetapi berada di posisi yang tidak tepat</p>
+				<div class="word-example">
+					<span class="box-letter-example">C</span>
+					<span class="box-letter-example green">E</span>
+					<span class="box-letter-example orange">R</span>
+					<span class="box-letter-example green">A</span>
+					<span class="box-letter-example green">H</span>
+				</div>
+				<p></p>
+				<p>huruf <b>C</b> tidak ada dalam kata tebakan</p>
+			</div>
+		</div>
+
+		<div class="statistic-page">
+			<div class="page-body">
+				<p class="close-statistic close-button"><i class="fa fa-times"></i></p>
+				<p class="title-menu">STATISTIK</p>
+				<div class="statistic-box-container">
+					<div class="statistic-box">
+						<span class="statistic-number number-played">12x</span>
+						<span class="statistic-descrption">bermain</span>
+					</div>
+					<div class="statistic-box">
+						<span class="statistic-number win-percentage">76</span>
+						<span class="statistic-descrption">% berhasil</span>
+					</div>
+					<div class="statistic-box">
+						<span class="statistic-number average-guest">5,4</span>
+						<span class="statistic-descrption">rata-rata tebakan</span>
+					</div>
+					<div class="statistic-box">
+						<span class="statistic-number best-score">834</span>
+						<span class="statistic-descrption">skor terbaik</span>
+					</div>
+				</div>
+				<br><br>
+				<p class="title-menu">DISTRIBUSI JUMLAH TEBAKAN</p>
+				<canvas id="myChart" height="90"></canvas>
+			</div>
+		</div>
+
+		<div class="navbar">
+			<span class="icon">
+				<span class="account" onclick="updateUserName()"><i class="fa fa-bars" aria-hidden="true"></i><span id='username'></span></span>
+				<i class="fa fa-info-circle" aria-hidden="true"></i>
+			</span>
+			<span id="title-game"><img id='logo' src="logo1.png"></span>
+			<span class="icon">
+				<i class="fa fa-users" aria-hidden="true" onclick="findEnemy()"></i>
+				<i class="fa fa-bar-chart" aria-hidden="true"></i>
+				<i class="fa fa-cog" aria-hidden="true"></i>	
+			</span>
+		</div>
+
+		<div id='container-words'>		
+			<p id='clock'><span id="minute">--</span>:<span id="second">--</span></p>
+			<div class="word">
+				<span class="box-letter">?</span>
+				<span class="box-letter">?</span>
+				<span class="box-letter">?</span>
+				<span class="box-letter">?</span>
+				<span class="box-letter">?</span>
+			</div>	
+		</div>
+
+		<div id='info-center'>
+			<div class="info-center-box">
+				<p class="info-player"></p>
+				<p class="info-game">cari lawan main dulu bos</p>
+			</div>
+		</div>
+
+		<div class="keyboard-wrapper">
+			<div class="keyboard keyboard-section1">
+				<div class="key" id="Q">Q</div>
+				<div class="key">W</div>
+				<div class="key">E</div>
+				<div class="key">R</div>
+				<div class="key">T</div>
+				<div class="key">Y</div>
+				<div class="key">U</div>
+				<div class="key">I</div>
+				<div class="key">O</div>
+				<div class="key">P</div>
+			</div>
+			<div class="keyboard keyboard-section2">
+				<div class="key">A</div>
+				<div class="key">S</div>
+				<div class="key">D</div>
+				<div class="key">F</div>
+				<div class="key">G</div>
+				<div class="key">H</div>
+				<div class="key">J</div>
+				<div class="key">K</div>
+				<div class="key">L</div>
+			</div>
+			<div class="keyboard keyboard-section3">
+				<div class="key enter-key">Enter</div>
+				<div class="key">Z</div>
+				<div class="key">X</div>
+				<div class="key">C</div>
+				<div class="key">V</div>
+				<div class="key">B</div>
+				<div class="key">N</div>
+				<div class="key">M</div>
+				<div class="key del-key">Delete</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+	<!-- <script type="text/javascript" src="sweetalert.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!-- <script type="text/javascript" src="chart.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+	<!-- <script type="text/javascript" src="chart-plugin-data-label.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="nav.js"></script>
+	<script type="text/javascript" src="statistic.js"></script>
+	<script type="text/javascript" src="socket.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+
+</body>
+</html>
