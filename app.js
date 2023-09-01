@@ -211,7 +211,7 @@ function startTimer(minute, second){
 				let randomNumberForGifDefeat = Math.floor(Math.random()*7);
 				Swal.fire({
 				  title: 'Wuuu!!!',
-				  text: `kamu kalah lawan ${myEnemy}`,
+				  text: `kamu kalah lawan ${myEnemy}, tetap semangat ya`,
 				  imageUrl: `gif/kalah${randomNumberForGifDefeat}.gif`,
 				  // imageWidth: 400,
 				  imageHeight: 200,
@@ -256,12 +256,12 @@ socket.on('you-win', () => {
 	let randomNumberForGifWin = Math.floor(Math.random()*5);
 	Swal.fire({
 		title: 'HOREE!!!',
-		text: `Yee kamu berhasil menang, ${myEnemy} cupu`,
+		text: `Yee kamu berhasil menang, keren!!!`,
 		imageUrl: `gif/menang${randomNumberForGifWin}.gif`,
 		// imageWidth: 400,
 		imageHeight: 200,
 		imageAlt: 'berhasil',
-		html : `<p>Yee kamu berhasil menang, ${myEnemy} cupu</p>`,
+		html : `<p>Yee kamu berhasil menang, keren!!!</p>`,
 		confirmButtonText : `main lagi dengan ${myEnemy}`,
 		showDenyButton: true,
 		denyButtonText: 'Cari lawan lain',
